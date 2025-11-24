@@ -7,7 +7,7 @@ Parking: Place number T2 103 in the garage on the -2nd level.
 If the parking ramp does not rise, press the button on the left and tell the security guard that you are going to the parking slot T2 103
 Check-in: from 14:00
 Check-out: until 11:00
-Keys: At check-out, the key is left in the box 28.4 at the reception (floor 0).
+Keys: At check-out, the key and card is left in the box 28.4 at the reception (floor 0).
 Water: water is in the fridge
 Towels and soaps and shampoo: towels on the bed, soap and shampoo in the bathroom by the sink.
 Cases and dishes are located in the hanging areas in the kitchen

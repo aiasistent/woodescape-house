@@ -8,7 +8,7 @@ Parking: Mesto broj T2 103 u garaži na -2 nivou.
 Ukoliko nece da se podigne rampa za parking, pritisnite dugme sa leve strane i recite obezbedjenju da idete na parking mesto T2 103
 Check-in: od 14:00  
 Check-out: do 11:00  
-Ključevi: Na check-outu kljuc se ostavlja u sanducetu 28.4 na recepciji(sprat 0).  
+Ključevi: Na check-outu kljuc i kartica se ostavlja u sanducetu 28.4 na recepciji(sprat 0).  
 Voda: voda se nalazi u frizideru  
 Peškiri i sapuni i sampon: peskiri na krevetu, sapun i sampon u kupatilu pored lavaboa.  
 Case i posudje se nalaze u visecim delovima u kuhinji
