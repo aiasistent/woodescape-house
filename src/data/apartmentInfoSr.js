@@ -34,6 +34,8 @@ Tržni centar je na 1. spratu.
 Apartman nije pet friendly.
 Placanje je moguce samo kesom.
 Izdajemo fakture za firme.
+Stan je kao sa pinteresa.
+Stan je pogodan i moze se koristiti za kontent kreatore, snimanje reklama, photoshoot za tvoj online biznis.
 
 Upotreba kartice:
 Vaša kartica je ključ za sve prostorije i prolaze u objektu. Molimo vas da je uvek nosite sa sobom kako biste izbegli neprijatnosti.

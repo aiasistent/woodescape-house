@@ -33,6 +33,8 @@ The shopping center is on the 1st floor.
 The apartment is not pet friendly.
 Payment is only possible by cash.
 We issue invoices for companies.
+The apartment is like from pinterest.
+The apartment is suitable and can be used for content creators, filming commercials, photoshoots for your online business.
 
 Use of the card:
 Your card is the key to all rooms and passages in the building. Please carry it with you at all times to avoid any inconvenience. 
