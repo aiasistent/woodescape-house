@@ -23,7 +23,7 @@ export default function ChatEn() {
         Sky Residence
       </h1>
       <h1 className="text-center text-3xl font-bold mb-4 text-white tracking-wide">
-        AI Asistent Stana
+        AI Apartment Assistant
       </h1>
 
       <div
