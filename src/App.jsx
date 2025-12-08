@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div
       className="min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/tower.jpeg')" }}
+      style={{ backgroundImage: "url('/we4h.jpeg')" }}
     >
       <div className="z-10 w-full">
         <BrowserRouter>

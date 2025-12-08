@@ -20,25 +20,25 @@ export default function ChatEn() {
   return (
     <div className="max-w-lg mt-5 mb-5 mx-auto bg-[#0D1B2A] rounded-2xl shadow-xl p-6 border border-gray-200 transition-all duration-500 hover:shadow-blue-100 hover:-translate-y-1">
       <h1 className="text-center text-3xl font-bold mb-4 text-white tracking-wide">
-        Sky Residence
+        WoodEscape House
       </h1>
       <h1 className="text-center text-3xl font-bold mb-4 text-white tracking-wide">
-        AI Apartment Assistant
+        AI Assistant
       </h1>
 
       <div
-        style={{ backgroundImage: "url('/stan2.jpg')" }}
+        style={{ backgroundImage: "url('/we7h.jpeg')" }}
         className="relative h-100 overflow-y-auto p-4 border border-gray-300 rounded-lg bg-cover bg-center"
       >
         {messages.length > 0 ? (
-          <div className="relative z-10 bg-white/60 rounded-lg p-2">
+          <div className="relative z-10 bg-black/60 rounded-lg p-2">
             {messages.map((m, i) => (
               <p
                 key={i}
                 className={`my-2 text-sm leading-relaxed ${
                   m.role === "user"
-                    ? "text-blue-700 text-right"
-                    : "text-gray-900 text-left"
+                    ? "text-blue-200 text-right"
+                    : "text-white text-left"
                 }`}
               >
                 <b>{m.role === "user" ? "Guest:" : "Assistant:"}</b> {m.text}
@@ -55,7 +55,7 @@ export default function ChatEn() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="How can I help you?"
-          className="flex-grow border border-gray-300 rounded-lg p-2 text-gray-900 bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
+          className="flex-grow border border-gray-300 rounded-lg p-2 text-gray-900 bg-white focus:ring-2 focus:ring-white focus:outline-none transition-all"
         />
         <button
           onClick={sendMessage}
