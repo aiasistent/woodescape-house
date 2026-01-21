@@ -1,10 +1,16 @@
-import { useState } from "react";
-import { askApartmentAI } from "../api/openai";
-import { apartmentInfoEn } from "../data/apartmentInfoEn";
+import { useState, useEffect } from "react";
+import { apartmentInfo } from "../data/apartmentInfo";
 
 export default function ChatEn() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [lang, setLang] = useState("en");
+  const apartment = apartmentInfo[0];
+
+  useEffect(() => {
+    setMessages([]);
+    setInput("");
+  }, [lang]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -12,9 +18,21 @@ export default function ChatEn() {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
 
-    const aiReply = await askApartmentAI(input, apartmentInfoEn);
-    const assistantMessage = { role: "assistant", text: aiReply };
-    setMessages((prev) => [...prev, assistantMessage]);
+    const info = apartment.info[lang];
+
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: input,
+        apartmentInfo: info,
+        lang,
+      }),
+    });
+
+    const data = await res.json();
+
+    setMessages((prev) => [...prev, { role: "assistant", text: data.reply }]);
   };
 
   return (
