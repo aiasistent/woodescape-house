@@ -89,7 +89,7 @@ export default function ChatEn() {
             ))}
 
             {isTyping && (
-              <p className="text-sm text-white-600 italic mt-2">
+              <p className="text-sm text-white-200 italic mt-2">
                 Assistant is typing...
               </p>
             )}
