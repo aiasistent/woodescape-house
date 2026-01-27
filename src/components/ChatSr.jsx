@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { apartmentInfo } from "../data/apartmentInfo";
 
 export default function ChatSr() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [lang, setLang] = useState("sr");
+  const [isTyping, setIsTyping] = useState(false);
+  const bottomRef = useRef(null);
   const apartment = apartmentInfo[0];
 
   useEffect(() => {
@@ -12,27 +14,50 @@ export default function ChatSr() {
     setInput("");
   }, [lang]);
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
+
   const sendMessage = async () => {
     if (!input.trim()) return;
+
     const userMessage = { role: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setIsTyping(true);
 
-    const info = apartment.info[lang];
+    try {
+      const info = apartment.info[lang];
 
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: input,
-        apartmentInfo: info,
-        lang,
-      }),
-    });
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: input,
+          apartmentInfo: info,
+          lang,
+        }),
+      });
 
-    const data = await res.json();
+      if (!res.ok) {
+        throw new Error("API error");
+      }
 
-    setMessages((prev) => [...prev, { role: "assistant", text: data.reply }]);
+      const data = await res.json();
+
+      setMessages((prev) => [...prev, { role: "assistant", text: data.reply }]);
+    } catch (error) {
+      console.error(error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          text: (lang = "Došlo je do greške. Pokušajte ponovo."),
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   return (
@@ -62,6 +87,14 @@ export default function ChatSr() {
                 <b>{m.role === "user" ? "Gost:" : "Asistent:"}</b> {m.text}
               </p>
             ))}
+
+            {isTyping && (
+              <p className="text-sm text-gray-700 italic mt-2">
+                Asistent kuca...
+              </p>
+            )}
+
+            <div ref={bottomRef} />
           </div>
         ) : (
           ""
@@ -72,6 +105,7 @@ export default function ChatSr() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           placeholder="Kako vam mogu pomoći?"
           className="flex-grow border border-gray-300 rounded-lg p-2 text-gray-900 bg-white focus:ring-2 focus:ring-white focus:outline-none transition-all"
         />
