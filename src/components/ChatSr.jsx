@@ -89,7 +89,7 @@ export default function ChatSr() {
             ))}
 
             {isTyping && (
-              <p className="text-sm text-white-200 italic mt-2">
+              <p className="text-sm text-gray-100 italic mt-2">
                 Asistent kuca...
               </p>
             )}
