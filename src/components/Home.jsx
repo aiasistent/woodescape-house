@@ -9,13 +9,19 @@ export default function LanguageSelect() {
       <div className="flex gap-12 py-2">
         <button
           onClick={() => navigate("/chat")}
-          className="hover:cursor-pointer"
+          className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-white to-gray-400 px-6 py-3 font-semibold text-black shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none"
         >
-          <span className="text-white hover:text-gray-300">
-            Ask the AI ​Assistant
+          <span>Chat with AI Assistant</span>
+
+          {/* arrow / chat cue */}
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            💬
           </span>
         </button>
       </div>
+      <p className="mt-3 text-sm text-gray-300">
+        Available 24/7 • Answers in your language
+      </p>
     </div>
   );
 }
