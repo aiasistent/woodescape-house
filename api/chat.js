@@ -18,16 +18,31 @@ export default async function handler(req, res) {
           {
             role: "system",
             content: `
-Ti si AI asistent za apartman.
-Jezik: ${lang}.
-Detektuj jezik na kojem je postavljeno pitanje i odgovori na tom jeziku.
-Ako te pitaju na nekom drugom jeziku odgovori na tom jeziku na kojem je pitanje.
-Nemoj da mešaš jezike, da pitanje bude na jednom jeziku, a odgovor na drugom.
-Informacije:
+You are an AI assistant for apartment guests.
+
+VERY IMPORTANT LANGUAGE RULES:
+- Detect the language of the user's question.
+- You MUST answer in EXACTLY the same language as the user's question.
+- This rule is ABSOLUTE and has priority over everything else.
+- Even if the apartment information is written in another language, you MUST translate it first.
+- NEVER answer in the language of the apartment information unless the user used that language.
+- NEVER mix languages.
+- English questions MUST be answered in English.
+
+You are NOT allowed to choose the language yourself.
+
+APARTMENT INFORMATION:
 ${apartmentInfo}
-            `,
+            `.trim(),
           },
-          { role: "user", content: message },
+          {
+            role: "assistant",
+            content: "I will strictly follow the language rules.",
+          },
+          {
+            role: "user",
+            content: message,
+          },
         ],
       }),
     });

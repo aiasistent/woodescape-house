@@ -1,18 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { apartmentInfo } from "../data/apartmentInfo";
 
-export default function ChatSr() {
+export default function ChatEn() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [lang, setLang] = useState("sr");
   const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef(null);
   const apartment = apartmentInfo[0];
-
-  useEffect(() => {
-    setMessages([]);
-    setInput("");
-  }, [lang]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -27,7 +21,7 @@ export default function ChatSr() {
     setIsTyping(true);
 
     try {
-      const info = apartment.info[lang];
+      const info = apartment.info;
 
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -35,7 +29,6 @@ export default function ChatSr() {
         body: JSON.stringify({
           message: input,
           apartmentInfo: info,
-          lang,
         }),
       });
 
@@ -52,7 +45,7 @@ export default function ChatSr() {
         ...prev,
         {
           role: "assistant",
-          text: (lang = "Došlo je do greške. Pokušajte ponovo."),
+          text: "An error occurred. Try again.",
         },
       ]);
     } finally {
@@ -66,11 +59,11 @@ export default function ChatSr() {
         WoodEscape House
       </h1>
       <h1 className="text-center text-3xl font-bold mb-4 text-white tracking-wide">
-        AI Asistent
+        AI Assistant
       </h1>
 
       <div
-        style={{ backgroundImage: "url('/we8h.jpeg')" }}
+        style={{ backgroundImage: "url('/we7h.jpeg')" }}
         className="relative h-100 overflow-y-auto p-4 border border-gray-300 rounded-lg bg-cover bg-center"
       >
         {messages.length > 0 ? (
@@ -84,13 +77,13 @@ export default function ChatSr() {
                     : "text-white text-left"
                 }`}
               >
-                <b>{m.role === "user" ? "Gost:" : "Asistent:"}</b> {m.text}
+                <b>{m.role === "user" ? "Guest:" : "Assistant:"}</b> {m.text}
               </p>
             ))}
 
             {isTyping && (
               <p className="text-sm text-gray-100 italic mt-2">
-                Asistent kuca...
+                Assistant is typing...
               </p>
             )}
 
@@ -106,14 +99,14 @@ export default function ChatSr() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          placeholder="Kako vam mogu pomoći?"
+          placeholder="How can I help you?"
           className="flex-grow border border-gray-300 rounded-lg p-2 text-gray-900 bg-white focus:ring-2 focus:ring-white focus:outline-none transition-all"
         />
         <button
           onClick={sendMessage}
           className="bg-gray-200 text-[#000000] px-4 py-2 rounded-lg font-semibold shadow-md hover:bg-gray-300 hover:shadow-lg active:scale-95 transition-all duration-200"
         >
-          Pošalji
+          Send
         </button>
       </div>
     </div>

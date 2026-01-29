@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LanguageSelect from "./components/LanguageSelect";
-import ChatEn from "./components/ChatEng";
-import ChatSr from "./components/ChatSr";
+import Chat from "./components/Chat";
 
 export default function App() {
   return (
@@ -13,8 +12,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LanguageSelect />} />
-            <Route path="/chat-sr" element={<ChatSr />} />
-            <Route path="/chat-en" element={<ChatEn />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </BrowserRouter>
       </div>
